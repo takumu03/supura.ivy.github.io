@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>スプラ ブキ診断</title>
+  <link rel="stylesheet" href="css\style-2.css" />
+</head>
+
+<body>
+  <div class="background-box-bukisindan">
+    <div class="overlay"></div>
+
+    <header>
+      <!-- アイコン横並び表示 -->
+      <div class="icon-bar">
+        <a href="index.html" class="icon-link">
+          <div class="icon-hover">
+            <img src="images-index/ho-muaikonn.jpg" alt="ホーム">
+            <div class="icon-overlay"></div>
+            <div class="icon-label">ホーム</div>
+          </div>
+        </a>
+        <a href="weapons.html" class="icon-link">
+          <div class="icon-hover">
+            <img src="images-index/bukiaikonn.jpg" alt="ブキ">
+            <div class="icon-overlay"></div>
+            <div class="icon-label">ブキ</div>
+          </div>
+        </a>
+        <a href="stage.html" class="icon-link">
+          <div class="icon-hover">
+            <img src="images-index/sute-jiaikon.jpg" alt="ステージ">
+            <div class="icon-overlay"></div>
+            <div class="icon-label">ステージ</div>
+          </div>
+        </a>
+        <a href="youtuber.html" class="icon-link">
+          <div class="icon-hover">
+            <img src="images-index\egoisut.jpg" alt="ユーチューバー">
+            <div class="icon-overlay"></div>
+            <div class="icon-label">ユーチューバー</div>
+          </div>
+        </a>
+      </div>
+      <h1>スプラ ブキ診断</h1>
+    </header>
+    <div class="content">
+      <main>
+        <div id="question-container">
+          <h2 id="question-title"></h2>
+          <div id="choices"></div>
+          <button id="next-button" disabled>次へ</button>
+        </div>
+
+        <div id="result-container" class="hidden">
+          <h2>診断結果</h2>
+          <p id="user-answers"></p>
+          <p id="recommendation"></p>
+          <button id="restart-button">もう一度診断する</button>
+
+        </div>
+
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
