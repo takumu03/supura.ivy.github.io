@@ -116,22 +116,31 @@ body {
 
 /* 主人公セクション */
 .character-info {
-  margin-top: 40px;
   text-align: center;
+}
+
+.character-info h1 {
+  position: relative;
+  font-size: 100px;
+  color: #ffffff;
+  margin-bottom: 20px;
+  z-index: 2;
+  text-shadow: 2px 2px 4px rgb(0, 0, 0);
 }
 
 .text-box {
   position: relative;
-  display: inline-block;
-  margin-bottom: 20px;
+  font-size: 60px;
+  color: #000000;
+  z-index: 2;
 }
 
 .ika-bg-layer {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 200px;
-  height: 200px;
+  top: 60%;
+  left: 100%;
+  width: 800px;
+  height: 600px;
   background-image: url('../images-index/ink.png');
   background-size: contain;
   background-repeat: no-repeat;
@@ -142,11 +151,25 @@ body {
 
 .ika-bg-layer2 {
   position: absolute;
-  top: 35%;
-  left: 10%;
-  width: 350px;
-  height: 350px;
+  top: 60px;
+  left: 180px;
+  width: 400px;
+  height: 400px;
   background-image: url('../images-index/ink_ao.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  transform: translate(-50%, -50%);
+  z-index: 0;
+  opacity: 1.0;
+}
+
+.ika-bg-layer3 {
+  position: absolute;
+  top: 300px;
+  left: 720px;
+  width: 550px;
+  height: 550px;
+  background-image: url('../images-index/ink-kiiro.png');
   background-size: contain;
   background-repeat: no-repeat;
   transform: translate(-50%, -50%);
@@ -160,27 +183,42 @@ body {
   font-weight: bold;
   color: #ffffff;
   text-shadow: 2px 2px 4px rgb(0, 0, 0);
-  position: relative;
   z-index: 2;
 }
 
 #h1 {
-  font-size: 36px;
+  font-size: 100px;
+  position: relative;
+  top: 20px;
+  /* 下に20px動かす */
+  right: 350px;
+  /* 右に10px動かす */
+  transform: rotate(-15deg);
+  /* 時計回りに15度傾ける */
+
 }
 
 #h2 {
-  font-size: 64px;
+  font-size: 150px;
+  position: relative;
+  top: 10px;
+  /* 下に20px動かす */
+  left: 270px;
+  /* 右に10px動かす */
+  transform: rotate(15deg);
+  /* 時計回りに15度傾ける */
+
 }
 
 .shuugou-img {
   max-width: 100%;
   height: auto;
   border-radius: 10px;
-  margin-top: 20px;
+  margin-top: 10px;
 }
 
 .description-text {
-  font-size: 20px;
+  font-size: 31px;
   padding: 10px;
   color: #ffffff;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
@@ -198,42 +236,62 @@ body {
 }
 
 .subtitle {
-  font-size: 20px;
+  font-size: 25px;
   font-weight: bold;
   margin-bottom: 10px;
+  position: relative;
+  right: 300px;
+  top: 30px;
   color: #444;
+  transform: rotate(-15deg);
 }
 
 .battle-info h1 {
   position: relative;
-  font-size: 50px;
-  color: #e60012;
+  font-size: 60px;
+  color: #000000;
   margin-bottom: 20px;
   z-index: 2;
+  text-shadow: 2px 2px 4px rgb(255, 255, 255);
 }
 
 .description {
-  font-size: 16px;
+  font-size: 23px;
   line-height: 1.8;
   color: #222;
   margin-bottom: 30px;
 }
 
-.video-container {
-  max-width: 100%;
-  overflow: hidden;
-  border-radius: 8px;
+/*ホームのユーチューブ動画*/
+.video {
+  position: relative;
+  width: 100%;
+  padding-top: 56.25%;
+  /* 16:9のアスペクト比 */
+  height: 0;
+  clear: both;
   margin-bottom: 20px;
 }
 
-video {
+.video iframe {
+  position: absolute;
+  top: 0px;
+  left: 0;
   width: 100%;
-  height: auto;
-  display: block;
+  height: 100%;
+}
+
+/* スマホ用に余白やサイズを調整したい場合の例 */
+@media screen and (max-width: 767px) {
+  .video {
+    padding-top: 56.25%;
+    /* アスペクト比はそのまま */
+    /* 必要に応じてmarginやbox-shadowなど追加可能 */
+  }
 }
 
 .footer-text {
-  font-size: 16px;
+  font-size: 30px;
   font-weight: bold;
   color: #000;
   line-height: 1.6;
@@ -364,7 +422,8 @@ h1.title-style-2 {
 }
 
 .buki-link:hover {
-  color: #ff0000; /* ホバー時の文字色（オレンジ） */
+  color: #ff0000;
+  /* ホバー時の文字色（オレンジ） */
 }
 
 .background-box-bukisindan {
