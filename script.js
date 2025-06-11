@@ -1,15 +1,19 @@
 const questions = [
   {
-    text: "あなたの好きな色は？",
-    choices: ["赤", "青", "緑"]
+    text: "スプラはどのぐらいしてる？",
+    choices: ["初心者", "ほどほど", "ガチ勢"]
   },
   {
-    text: "好きな動物は？",
-    choices: ["猫", "犬", "鳥"]
+    text: "どのタイプ？",
+    choices: ["前線でガツガツキル",
+      "後衛で生存意識",
+      "安定の立ち回り、味方のサポート"]
   },
-  {
-    text: "好きな季節は？",
-    choices: ["春", "夏", "冬"]
+   {
+    text: "どんなスペシャルが好み？",
+    choices: ["リスクを追ってでも相手を破壊したい",
+      "生存意識で使っていきたい",
+      "味方のサポート要因"]
   }
 ];
 
@@ -27,32 +31,33 @@ const restartButton = document.getElementById("restart-button");
 
 // すべての結果パターンをここで定義（例として一部）
 const resultsMap = {
-  "0-0-0": "あなたは情熱的で繊細なタイプです！",
-  "0-0-1": "あなたは情熱的で元気なタイプです！",
-  "0-0-1": "あなたは情熱的で元気なタイプです！",
-  "0-0-1": "あなたは情熱的で元気なタイプです！",
-  "0-0-1": "あなたは情熱的で元気なタイプです！",
-  "0-0-1": "あなたは情熱的で元気なタイプです！",
-  "0-0-1": "あなたは情熱的で元気なタイプです！",
-  "0-0-1": "あなたは情熱的で元気なタイプです！",
-  "0-0-1": "あなたは情熱的で元気なタイプです！",
-  "0-0-1": "あなたは情熱的で元気なタイプです！",
-  "0-0-1": "あなたは情熱的で元気なタイプです！",
-  "0-0-1": "あなたは情熱的で元気なタイプです！",
-  "0-0-1": "あなたは情熱的で元気なタイプです！",
-  "0-0-1": "あなたは情熱的で元気なタイプです！",
-  "0-0-1": "あなたは情熱的で元気なタイプです！",
-  "0-0-1": "あなたは情熱的で元気なタイプです！",
-  "0-0-1": "あなたは情熱的で元気なタイプです！",
-  "0-0-1": "あなたは情熱的で元気なタイプです！",
-  "0-0-1": "あなたは情熱的で元気なタイプです！",
-  "0-0-1": "あなたは情熱的で元気なタイプです！",
-  "0-0-1": "あなたは情熱的で元気なタイプです！",
-  "0-0-1": "あなたは情熱的で元気なタイプです！",
-  "0-0-1": "あなたは情熱的で元気なタイプです！",
-  "0-0-1": "あなたは情熱的で元気なタイプです！",
-
-
+  "0-0-0": "スプラシューター",
+  "0-0-1": "バケットスロッシャー",
+  "0-0-2": "スプラローラー",
+  "0-1-0": "イグザミナーヒュー",
+  "0-1-1": "トライストリンガー",
+  "0-1-2": "R-PEN/5H",
+  "0-2-0": "プライムシューター",
+  "0-2-1": "プロモデラーＲＧ",
+  "0-2-2": "N-ZAP85",
+  "1-0-0": "スプラマニューバー",
+  "1-0-1": "パブロ",
+  "1-0-2": "デンタルワイパーミント",
+  "1-1-0": "クーゲルシュライパー",
+  "1-1-1": "Ｒブラスターエリートデコ",
+  "1-1-2": "ハイドラント",
+  "1-2-0": "ケルビン525",
+  "1-2-1": "わかばシューター",
+  "1-2-2": "ダイナモローラー",
+  "2-0-0": "シャープマーカー",
+  "2-0-1": "５２ガロン",
+  "2-0-2": "Ｓブラスター",
+  "2-1-0": "フルイドｖ",
+  "2-1-1": "エクスプロッシャー",
+  "2-1-2": "リッター4K",
+  "2-2-0": "キャンピングシェルターソレーラ",
+  "2-2-1": "ノーチラス４７",
+  "2-2-2": "LACT-450",
 
 };
 
@@ -61,7 +66,6 @@ function displayQuestion(index) {
   const question = questions[index];
   questionTitle.textContent = question.text;
   choicesContainer.innerHTML = "";
-  nextButton.disabled = true;
 
   question.choices.forEach((choice, i) => {
     const btn = document.createElement("button");
@@ -71,21 +75,19 @@ function displayQuestion(index) {
       selectedAnswers[index] = i;
       Array.from(choicesContainer.children).forEach(b => b.classList.remove("selected"));
       btn.classList.add("selected");
-      nextButton.disabled = false;
+      // ここで次の質問へ進む処理を直接呼び出す
+      setTimeout(() => {
+        currentQuestion++;
+        if (currentQuestion < questions.length) {
+          displayQuestion(currentQuestion);
+        } else {
+          showResult();
+        }
+      }, 300); // 300ms ほど待つと選択の視覚効果が見やすくなります
     };
     choicesContainer.appendChild(btn);
   });
 }
-
-// 次へ進む
-nextButton.addEventListener("click", () => {
-  currentQuestion++;
-  if (currentQuestion < questions.length) {
-    displayQuestion(currentQuestion);
-  } else {
-    showResult();
-  }
-});
 
 // 結果を表示
 function showResult() {
