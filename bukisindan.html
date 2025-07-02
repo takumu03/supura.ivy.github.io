@@ -5,7 +5,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>スプラ ブキ診断</title>
-  <link rel="stylesheet" href="css\style-2.css" />
+  <link rel="stylesheet" href="css/style-2.css" />
 </head>
 
 <body>
@@ -38,7 +38,7 @@
         </a>
         <a href="youtuber.html" class="icon-link">
           <div class="icon-hover">
-            <img src="images-index\egoisut.jpg" alt="ユーチューバー">
+            <img src="images-index/egoisut.jpg" alt="ユーチューバー">
             <div class="icon-overlay"></div>
             <div class="icon-label">ユーチューバー</div>
           </div>
@@ -47,7 +47,7 @@
       <h1>スプラ ブキ診断</h1>
     </header>
 
-    
+
     <div class="content">
       <main>
         <div id="question-container">
@@ -56,13 +56,23 @@
         </div>
 
         <div id="result-container" class="hidden">
-          <h2>診断結果</h2>
+          <h2>キミのブキはこれだ！！</h2>
           <p id="user-answers"></p>
-          <p id="recommendation"></p>
-          <button id="restart-button">もう一度診断する</button>
+          <h3 id="weapon-name"></h3> <!-- ← 武器の名前を表示 -->
 
+          <div class="weapon-images-container">
+            <img id="weapon-image" src="" alt="" /> <!-- ← 武器の画像 -->
+
+            <div class="sub-special-container">
+              <img id="sub-image" class="sub-special" src="" alt="サブ">
+              <img id="special-image" class="sub-special" src="" alt="スペシャル">
+            </div>
+          </div>
+          
+          <p id="weapon-description"></p> <!-- ← 武器の説明 -->
+          <button id="restart-button" class="choice-button">もう一度診断する</button>
         </div>
-
+      </main>
     </div>
   </div>
 
