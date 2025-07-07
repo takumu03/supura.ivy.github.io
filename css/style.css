@@ -222,12 +222,30 @@ body {
 
 }
 
-.shuugou-img {
-  max-width: 100%;
+/* ブキの画像を画面幅に合わせて縮小する */
+.shuugou-img img {
+  max-width: 90%;
+  /* 親要素の90%まで */
   height: auto;
+  /* 縦横比を保持 */
+  margin: 10px auto;
+  /* 上下に余白 */
+  display: block;
+  /* 中央寄せ */
   border-radius: 10px;
-  margin-top: 10px;
+  /* デザイン的に */
 }
+
+
+
+.text-shadow-pink {
+  text-shadow:
+    -1px -1px 0 rgb(255, 0, 247),
+    1px -1px 0 rgb(255, 0, 247),
+    -1px 1px 0 rgb(255, 0, 247),
+    1px 1px 0 rgb(255, 0, 247);
+}
+
 
 .shuugou-img h2 {
   font-size: 90px;
@@ -287,9 +305,7 @@ body {
 /*ステージ写真の調整*/
 .stage-photo {
   width: 1200px;
-  /* 幅を500pxに変更 */
   height: 700px;
-  /* 高さは自動調整（比率維持） */
   max-width: 100%;
 }
 
@@ -343,7 +359,7 @@ body {
 
 .video iframe {
   position: absolute;
-  top: 0px;
+  top: 0;
   left: 0;
   width: 100%;
   height: 100%;
@@ -531,15 +547,12 @@ p.weapons-text {
 /*ユーチューバーアイコン*/
 .icon-hover-2 {
   position: relative;
-  top: -50px;
   width: 500px;
   height: 500px;
   border: 5px solid #ffffff;
   border-radius: 50%;
   overflow: hidden;
   top: 0;
-  /* ← 不要なズレをリセット */
-
 }
 
 .icon-hover-2 img {
@@ -647,6 +660,7 @@ p.weapons-text {
   height: auto;
   z-index: 2;
   transition: transform 0.3s ease;
+  transform-origin: center center;
 }
 
 .overlay-text {
@@ -658,11 +672,38 @@ p.weapons-text {
   color: white;
   font-size: 100px;
   font-weight: bold;
+  text-align: center;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
   z-index: 3;
   transition: transform 0.3s ease;
-
 }
+
+
+@media (max-width: 768px) {
+  .overlay-text {
+    top: 50%;
+    /* 高さ方向は中央 */
+    left: 30%;
+    /* 左寄りに配置（中央なら50%、少し左寄せに30%） */
+    transform: translate(-50%, -50%);
+    font-size: 40px;
+    /* サイズも調整 */
+  }
+}
+
+
+@media (max-width: 768px) {
+  .overlay-image {
+    top: 50%;
+    left: 30%;
+    transform: translate(-50%, -50%);
+    width: 50%;
+    transform-origin: center center;
+  }
+}
+
+
+
 
 /* テキストにホバーした時、テキストと画像を拡大・色変更 */
 .overlay-text:hover {
@@ -677,17 +718,6 @@ p.weapons-text {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
 .background-box-bukisindan {
   position: relative;
   min-height: 100vh;
@@ -696,3 +726,63 @@ p.weapons-text {
   background-size: auto;
   background-position: center;
 }
+
+
+/*フッター部分*/
+.site-footer {
+  background-color: rgba(0, 0, 0, 0.7);
+  /* 半透明の黒背景 */
+  color: #fff;
+  text-align: center;
+  padding: 20px 10px;
+  font-size: 14px;
+}
+
+.site-footer a {
+  color: #fff;
+  text-decoration: none;
+  margin: 0 5px;
+}
+
+.site-footer a:hover {
+  text-decoration: underline;
+}
+
+/*ニュース速報*/
+.news-ticker {
+  background-color: #d32f2f;
+  color: white;
+  overflow: hidden;
+  white-space: nowrap;
+  box-sizing: border-box;
+  padding: 10px 0;
+  border-radius: 5px;
+  max-width: 100%;
+  box-shadow: 0 0 8px rgba(211, 47, 47, 0.7);
+  user-select: none;
+}
+
+.news-ticker__content {
+  display: inline-block;
+  padding-left: 100%; /* 左から画面外 */
+  animation: ticker-slide 15s linear infinite;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+@keyframes ticker-slide {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+/* スマホなど小さい画面の文字サイズ調整 */
+@media (max-width: 600px) {
+  .news-ticker__content {
+    font-size: 1rem;
+  }
+}
+

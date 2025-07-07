@@ -220,31 +220,33 @@ footer {
 
 .choice-button {
   all: unset;
+  display: block;
+  box-sizing: border-box;
   position: relative;
   width: 100%;
   aspect-ratio: 1 / 1;
   background-color: #ccc;
-  /* ← 初期背景（JSで上書きされる） */
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
   border-radius: 12px;
   cursor: pointer;
   z-index: 1;
-  transition: transform 0.3s ease, background-image 0.4s ease;
+  transition: transform 0.3s ease, baground-image 0.4s ease;
   transform-origin: center center;
 }
 
 .choice-button:hover {
   transform: scale(1.05);
   background-image: var(--hover-image);
-  background-size: 120%;
+  background-size: cover;
   background-color: transparent !important;
   background-repeat: no-repeat;
   background-position: center;
   z-index: 10;
   transform-origin: center center;
 }
+
 
 
 
